@@ -28,6 +28,16 @@ int main(void)
 	/* 10 */ check(ft_isalnum('0')); showLeaks();
 	/* 11 */ check(!ft_isalnum('9' + 1)); showLeaks();
 	/* 12 */ check(ft_isalnum('9')); showLeaks();
+	/* 13 */ check(!ft_isalnum(0)); showLeaks();
+	/* 14 */ check(!ft_isalnum(128)); showLeaks();
+	int i = INT_MIN;
+	for (; i < INT_MAX && !ft_isalnum(i); i++)
+		;
+	/* 15 */ check(i == '0'); showLeaks();
+	i = INT_MAX;
+	for (; i > INT_MIN && !ft_isalnum(i); i--)
+		;
+	/* 16 */ check(i == 'z'); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
