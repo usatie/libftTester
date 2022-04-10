@@ -37,6 +37,9 @@ int main(void)
 	/* 9 */ check(l->next->next->next->content == (void*)4);
 	/* 10 */ check(l->next->next->next->next == 0);
 	freeList(l); showLeaks();
+	l = NULL;
+	ft_lstadd_back(&l, NULL);
+	/* 11 */ check(l == NULL); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }

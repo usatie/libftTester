@@ -28,6 +28,9 @@ int main(void)
 	/* 4 */ check(l->next->content == (void*)1);
 	/* 5 */ check(l->next->next == 0); 
 	freeList(l); showLeaks();
+	l = NULL;
+	ft_lstadd_front(&l, NULL);
+	/* 6 */ check(l == NULL); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
