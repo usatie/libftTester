@@ -40,6 +40,11 @@ int main(void)
 	l = NULL;
 	ft_lstadd_back(&l, NULL);
 	/* 11 */ check(l == NULL); showLeaks();
+	l = ft_lstnew((void*)1);
+	ft_lstadd_back(&l, NULL);
+	/* 12 */ check(l->content == (void*)1);
+	/* 13 */ check(l->next == NULL);
+	freeList(l); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }

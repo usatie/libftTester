@@ -31,6 +31,11 @@ int main(void)
 	l = NULL;
 	ft_lstadd_front(&l, NULL);
 	/* 6 */ check(l == NULL); showLeaks();
+	l = ft_lstnew((void*)1);
+	ft_lstadd_front(&l, NULL);
+	/* 7 */ check(l->content == (void*)1);
+	/* 8 */ check(l->next == NULL);
+	freeList(l); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
