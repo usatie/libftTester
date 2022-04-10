@@ -23,6 +23,10 @@ int main(void)
 	s = ft_strdup((char*)"");
 	/* 3 */ check(!strcmp(s, ""));
 	/* 4 */ mcheck(s, 1); free(s); showLeaks();
+
+	s = ft_strdup((char*)"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+	/* 5 */ check(!strcmp(s, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
+	/* 6 */ mcheck(s, 10 + 26 + 26 + 1); free(s); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
