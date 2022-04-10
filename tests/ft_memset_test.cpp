@@ -23,9 +23,14 @@ int main(void)
 	/* 1 */ check(tab[0] == 0); showLeaks();
 	ft_memset(tab, 'A', 42);
 	int i = 0;
-	for (; i < 100 && tab[i] == 'A'; ++i)
+	for (; i < 100 && tab[i] == 'A'; i++)
 		;
 	/* 2 */ check(i == 42 && tab[42] == 0); showLeaks();
+	ft_memset(tab, 'B', 100);
+	i = 0;
+	for (; i < 100 && tab[i] == 'B'; i++)
+		;
+	/* 3 */ check(i == 100); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
