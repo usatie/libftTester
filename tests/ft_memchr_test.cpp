@@ -22,6 +22,12 @@ int main(void)
 	/* 3 */ check(ft_memchr(s, 2, 3) == s + 2); showLeaks();
 	/* 4 */ check(ft_memchr(s, 6, 6) == NULL); showLeaks();
 	/* 5 */ check(ft_memchr(s, 2 + 256, 3) == s + 2); showLeaks(); //Cast check
+	/* 6 */ check(ft_memchr(s, 5, 5) == NULL); showLeaks();
+	/* 7 */ check(ft_memchr(s, 5, 6) == s + 5); showLeaks();
+	/* 8 */ check(ft_memchr(s, 5, 7) == s + 5); showLeaks();
+	/* 9 */ check(ft_memchr(s, 6, 6) == NULL); showLeaks();
+	/* 10 */ check(ft_memchr(s, 6, 7) == NULL); showLeaks();
+	/* 11 */ check(ft_memchr(s, 6, 8) == NULL); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
