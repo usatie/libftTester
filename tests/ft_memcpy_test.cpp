@@ -26,6 +26,16 @@ int main(void)
 	for (; i < 100 && dest[i] == 0; ++i)
 		;
 	/* 2 */ check(i == 2 && dest[2] == 'A'); showLeaks();
+	char s[10] = {'A', 'B', 'C', 'D', 'E'};
+	ft_memcpy(s + 5, s, 5);
+	/* 3 */ check(memcmp(s, s + 5, 5) == 0);
+	ft_memcpy(s, s + 5, 5);
+	/* 4 */ check(memcmp(s + 5, s, 5) == 0);
+	// This behaviour is undefined
+	///* 3 */ check(memcmp(s, s + 3, 5) == 0);
+	//ft_memcpy(s, s + 3, 5);
+	// This behaviour is undefined
+	///* 4 */ check(memcmp(s, s + 3, 5) == 0);
 	write(1, "\n", 1);
 	return (0);
 }
