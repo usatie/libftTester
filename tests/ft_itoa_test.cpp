@@ -38,6 +38,12 @@ int main(void)
 	s = ft_itoa(42);
 	/* 11 */ check(!strcmp(s, to_string(42).c_str()));
 	/* 12 */ mcheck(s, strlen(to_string(42).c_str()) + 1); free(s); showLeaks();
+	s = ft_itoa(INT_MAX - 1);
+	/* 13 */ check(!strcmp(s, to_string(INT_MAX - 1).c_str()));
+	/* 14 */ mcheck(s, strlen(to_string(INT_MAX - 1).c_str()) + 1); free(s); showLeaks();
+	s = ft_itoa(INT_MIN + 1);
+	/* 15 */ check(!strcmp(s, to_string(INT_MIN + 1).c_str()));
+	/* 16 */ mcheck(s, strlen(to_string(INT_MIN + 1).c_str()) + 1); free(s); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
