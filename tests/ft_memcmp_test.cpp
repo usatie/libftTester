@@ -25,6 +25,13 @@ int main(void)
 	/* 3 */ check(ft_memcmp(s, s2, 1) > 0); showLeaks();
 	/* 4 */ check(ft_memcmp(s2, s, 1) < 0); showLeaks();
 	/* 5 */ check(ft_memcmp(s2, s3, 4) != 0); showLeaks();
+	/* 6 */ check(ft_memcmp(s2, s3, 2) == 0); showLeaks();
+	/* 7 */ check(ft_memcmp(s2, s3, 3) != 0); showLeaks();
+	/* 8 */ check(ft_memcmp(s, sCpy, 0) == 0); showLeaks();
+	/* 9 */ check(ft_memcmp(s, sCpy, 1) == 0); showLeaks();
+	/* 10 */ check(ft_memcmp(s, sCpy, 2) == 0); showLeaks();
+	/* 11 */ check(ft_memcmp(s, sCpy, 3) == 0); showLeaks();
+	/* 12 */ check(ft_memcmp(s, sCpy, 4) == 0); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
