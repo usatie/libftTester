@@ -21,10 +21,12 @@ ifeq ($(IN_DOCKER),TRUE)
 endif
 
 $(MANDATORY): %: mandatory_start
-	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L$(LIBFT_PATH) -lft && $(VALGRIND) ./a.out && rm -f a.out
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L$(LIBFT_PATH) -lft 2>>cc_error.log && $(VALGRIND) ./a.out 2>>tests_error.log && rm a.out || printf "\e[m%-16s: \e[31m[Missing]\n\e[m" "ft_$*"
+	@find . -name "*.log" -size 0 -exec rm {} \;
 
 $(BONUS): %: bonus_start
-	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L$(LIBFT_PATH) -lft && $(VALGRIND) ./a.out && rm -f a.out
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L$(LIBFT_PATH) -lft 2>>cc_error.log && $(VALGRIND) ./a.out 2>>tests_error.log && rm a.out || printf "\e[m%-16s: \e[31m[Missing]\n\e[m" "ft_$*"
+	@find . -name "*.log" -size 0 -exec rm {} \;
 
 $(VSOPEN): vs%:
 	@code $(TESTS_PATH)ft_$*_test.cpp
